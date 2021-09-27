@@ -40,11 +40,11 @@
     <title>Miscellaneous {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top">
-        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+    <header class="container-fluid bg-green fixed-top">
+        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font text-black my-0"><strong>Misc</strong>ellaneous</h2>
+                    <h2 class="logo-font text-green my-0"><strong>Misc</strong>ellaneous</h2>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -64,7 +64,7 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="text-green nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
                                 <p class="my-0">My Account</p>
@@ -84,14 +84,14 @@
                         </div>
                     </li>
                     <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-green{% endif %} nav-link" href="">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                                 <p class="my-0">
                                     {% if grand_total %}
-                                        ${{ grand_total|floatformat:2 }}
+                                        £{{ grand_total|floatformat:2 }}
                                     {% else %}
-                                        $0.00
+                                        £0.00
                                     {% endif %}
                                 </p>
                             </div>
@@ -100,7 +100,7 @@
                 </ul>
             </div>
         </div>
-        <div class="row bg-white">
+        <div class="row bg-green">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -109,13 +109,13 @@
             </nav>
         </div>
         <div id="delivery-banner" class="row text-center">
-            <div class="col bg-black text-white">
-                <h4 class="logo-font my-1">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>                
+            <div class="col bg-banner text-white">
+                <h5 class="my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h5>
             </div>            
         </div>
     </header>
 
-    {% if messages %}
+    <!-- {% if messages %}
         <div class="message-container">
             {% for message in messages %}
                 {% with message.level as level %}
@@ -131,7 +131,7 @@
                 {% endwith %}
             {% endfor %}
         </div>
-    {% endif %}
+    {% endif %} -->
 
     {% block page_header %}
     {% endblock %}
