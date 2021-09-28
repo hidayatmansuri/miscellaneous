@@ -57,7 +57,7 @@ body {
 }
 
 .bg-green{
-    background-color: #81bd9a;
+    background-color: #0e590a;
 }
 
 .shop-now-button {
@@ -66,8 +66,65 @@ body {
     min-width: 260px;
 }
 
+.search-form {
+  --searchButtonWidth: 50px;
+  
+  /* max-width: 320px; */
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.search-input {
+  border: 0;
+  margin: 0;
+  padding: 0.5rem calc(var(--searchButtonWidth) + 0.5rem) 0.5rem 0.5rem;
+  border-radius: 8px;
+  /* width: 100%; */
+  background: #ddd;
+  -webkit-appearance: none;
+  font-size: 13px;
+}
+.search-input:focus {
+  outline: 0;
+  background: white;
+}
+.search-input:not(:placeholder-shown) ~ .search-button {
+  transform: translateX(calc(-1 * var(--searchButtonWidth)));
+}
+
+.search-button {
+  border: 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  position: absolute; 
+  top: 0;
+  left: 100%;
+  width: var(--searchButtonWidth);
+  transition: 0.4s !important;
+  background: #455A64;
+  color: #0e590a !important;
+  font-size: 13px;
+  height: 100%;
+}
+
+.search-button:focus {
+  outline: 0;
+  background: transparent;
+}
+
+body {
+  margin: 2rem;
+  background: #888;
+}
+.screen-reader-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
 .btn-black {
-    background: black;
+    /* background: black; */
     color: white;
 }
 
@@ -2505,7 +2562,7 @@ progress {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
+  border-radius: 25px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
