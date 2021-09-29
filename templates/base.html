@@ -44,7 +44,7 @@
         <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font text-white my-0"><strong>Misc</strong>ellaneous</h2>
+                    <h2 class="logo-font text-white my-0 pt-2"><strong>Misc</strong>ellaneous</h2>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -52,7 +52,7 @@
                     <input id="search" class="search-input form-control border border-black rounded-pill" type="text" name="q" placeholder="Search Product">
                     <button class="search-button btn" type="submit">
                         <span class="icon">
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-search fa-lg"></i>
                         </span>
                     </button>
                 </form>
@@ -106,6 +106,12 @@
                             </div>
                         </a>
                     </li>
+                    <li class="list-inline-item">
+                        <div class="text-center">
+                            <div><i class="far fa-lightbulb btn-toggle fa-lg"></i></div>
+                            <p class="my-0 text-white">Light | Dark
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -152,8 +158,17 @@
     <script type="text/javascript">
         $('.toast').toast('show');
     </script>
-    {% endblock %}
 
+    <script type="text/javascript">
+        const btn = document.querySelector(".btn-toggle");
+
+        btn.addEventListener("click", function () {
+            document.body.classList.toggle("dark-theme");
+            document.shop-now-button.classList.toggle("dark-theme");
+        });
+    </script>
+    {% endblock %}
+    
     
   </body>
 </html>

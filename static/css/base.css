@@ -34,8 +34,14 @@ html {
 
 body {
     height: calc(100vh-164px);
-    color: #555;
+    color: #000;
     font-family: 'Lato' !important;
+    background: #fff;
+}
+
+body.dark-theme {
+  color: #fff;
+  background: #000;
 }
 
 /* from Bulma */
@@ -48,8 +54,8 @@ body {
 }
 
 .logo-font {
-    font-family: 'Ubuntu' !important;
-    text-transform: uppercase !important;
+    font-family: 'Josefin Sans' !important;
+    /* text-transform: uppercase !important; */
 }
 
 .main-logo-link {
@@ -57,13 +63,20 @@ body {
 }
 
 .bg-green{
-    background-color: #0e590a;
+    /* background-color: #0e590a; */
+    background: var(--bs-logo);
 }
 
 .shop-now-button {
     background: black;
     color: white;
     min-width: 260px;
+}
+
+.shop-now-button.dark-theme{
+  background: #fff;
+  color: #000;
+  min-width: 260px;
 }
 
 .search-form {
