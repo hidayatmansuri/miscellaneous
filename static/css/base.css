@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Lato:wght@300;400;700&family=Ubuntu:wght@300;400;500&display=swap');
 
 :root {
-    --bs-logo: #0e590a;
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
     --bs-purple: #6f42c1;
@@ -26,6 +25,18 @@
     --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+
+    /* Light Mode */
+    --nav-color: #0e590a;
+    --font-color: #011801;
+    --bg-color: #e7eee7;
+    --hover-color: #c3d6c2;
+}
+
+[data-theme="dark"] {
+  --font-color: #e7eee7;
+  --bg-color: #011801;
+  --hover-color: #4d5d4d;
 }
 
 html {
@@ -34,14 +45,71 @@ html {
 
 body {
     height: calc(100vh-164px);
-    color: #000;
+    color: var(--font-color) !important ;
     font-family: 'Lato' !important;
-    background: #fff;
+    background: var(--bg-color) !important;
+    margin: 2rem;
 }
 
-body.dark-theme {
-  color: #fff;
-  background: #000;
+/*slider switch css */
+
+.justify{
+  display: flex !important;
+  justify-content: center;
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 22px;
+  position: relative;
+  width: 50px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: var(--bg-color);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #0e590a;
+  bottom: 4px;
+  content: "";
+  height: 14px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 14px;
+}
+
+input:checked + .slider {
+  background-color: var(--bg-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 22px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 /* from Bulma */
@@ -63,20 +131,21 @@ body.dark-theme {
 }
 
 .bg-green{
-    /* background-color: #0e590a; */
-    background: var(--bs-logo);
+    background: var(--nav-color);
 }
 
 .shop-now-button {
-    background: black;
-    color: white;
+    background: var(--bg-color) !important;
+    color: var(--font-color) !important;
     min-width: 260px;
+    border: 1px solid var(--hover-color) !important;
 }
 
-.shop-now-button.dark-theme{
-  background: #fff;
-  color: #000;
+.shop-now-button:hover {
+  background: var(--hover-color) !important;
+  color: var(--font-color) !important;
   min-width: 260px;
+  border: 1px solid var(--hover-color);
 }
 
 .search-form {
@@ -126,10 +195,6 @@ body.dark-theme {
   background: transparent;
 }
 
-body {
-  margin: 2rem;
-  background: #888;
-}
 .screen-reader-text {
   position: absolute;
   top: -9999px;
@@ -164,9 +229,9 @@ body {
     color: white;
 }
 
-.text-green {
+/* .text-green {
     color: #0e590a !important;
-}
+} */
 
 .border-black {
     border: 1px solid black !important;
@@ -385,7 +450,7 @@ input[name='q']::placeholder {
 
     .bg-banner{
         /* background: #0e590a !important; */
-        background: var(--bs-logo);
+        background: var(--nav-color);
     }
 }
 
@@ -422,7 +487,7 @@ input[name='q']::placeholder {
 
     .bg-banner{
         /* background: #0e590a !important; */
-        background: var(--bs-logo);
+        background: var(--nav-color);
     }
 
     .btn.btn-outline-black.rounded-0,

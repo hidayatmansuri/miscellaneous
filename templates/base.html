@@ -15,10 +15,6 @@
     {% endblock %}
 
     {% block corecss %}
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Lato:wght@300;400;700&family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">  -->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -26,6 +22,7 @@
     {% endblock %}
 
     {% block corejs %}
+        <!-- <script src="{% static 'js/scripts.js' %}"></script> -->
         <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -107,10 +104,16 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <div class="text-center">
-                            <div><i class="far fa-lightbulb btn-toggle fa-lg"></i></div>
-                            <p class="my-0 text-white">Light | Dark
-                        </div>
+                        <div class="justify">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox" />
+                                    <div class="slider round"></div>
+                                </label>
+                            </div>
+                            
+                         </div>
+                         <p class="my-0 text-white">Light | Dark
                     </li>
                 </ul>
             </div>
@@ -157,15 +160,32 @@
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');
-    </script>
+    
+        // -----Light | Dark mode toggle-----
 
-    <script type="text/javascript">
-        const btn = document.querySelector(".btn-toggle");
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
 
-        btn.addEventListener("click", function () {
-            document.body.classList.toggle("dark-theme");
-            document.shop-now-button.classList.toggle("dark-theme");
-        });
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+  
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }    
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
     </script>
     {% endblock %}
     
