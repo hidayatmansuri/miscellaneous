@@ -22,7 +22,7 @@
     {% endblock %}
 
     {% block corejs %}
-        <!-- <script src="{% static 'js/scripts.js' %}"></script> -->
+        <script src="static/js/scripts.js"></script>
         <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -39,14 +39,17 @@
   <body>
     <header class="container-fluid bg-green fixed-top">
         <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 justify d-lg-flex">
+                <button  onclick="openSlideMenu()" class="btn-menu slide" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h2 class="logo-font text-white my-0 pt-2"><strong>Misc</strong>ellaneous</h2>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="" class="search-form">
-                    <input id="search" class="search-input form-control border border-black rounded-pill" type="text" name="q" placeholder="Search Product">
+                    <input id="search" class="search-input form-control rounded-pill" type="text" name="q" placeholder="Search Product">
                     <button class="search-button btn" type="submit">
                         <span class="icon">
                             <i class="fas fa-search fa-lg"></i>
@@ -126,10 +129,14 @@
                 
             </nav>
         </div>
-        <div id="delivery-banner" class="row text-center">
-            <div class="col bg-banner text-white">
-                <h5 class="my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h5>
-            </div>            
+        <div id="menu" class="navside text-center justify">
+            <!--Image which closes side Menu In on Left-->
+            <a href="#" class="close" onclick="closeSlideMenu()"><i class="fas fa-chevron-down"></i></a>
+            <a id="index" href="#" class="item active">Home</a>
+            <a href="#" class="item">Products</a>
+            <a href="#" class="item">About Us</a>
+            <a href="#" class="item">Contact Us</a>
+            <a href="#" class="item">Delivery</a>
         </div>
     </header>
 
@@ -186,6 +193,19 @@
         }
 
         toggleSwitch.addEventListener('change', switchTheme, false);
+
+        function openSlideMenu() {
+            document.getElementById('menu').style.height = '75px';
+            document.getElementById('content').style.marginTop = '75px';
+            $(this).find("i").removeClass("fa fa-chevron-down").addClass("fa fa-times");
+        }
+            
+        /*JavaScript for sliding Menu out to Left*/
+        function closeSlideMenu() {
+            document.getElementById('menu').style.height = '0';
+            document.getElementById('content').style.marginTop = '0';
+            $(this).find("i").removeClass("fa fa-times").addClass("fa fa-chevron-down");
+        }
     </script>
     {% endblock %}
     

@@ -121,9 +121,85 @@ input:checked + .slider:before {
     width: 1.5rem;
 }
 
+.btn-menu {
+  background: transparent !important;
+  border: 0px;
+  color: var(--bg-color);
+}
+
+/*----------------------------------------------Side Bar--*/
+
+/* .slide a {
+	font-size: 36px;
+} */
+
+.navside .close {
+	position: absolute;
+	top: 85px;
+	right: 22px;
+	margin-left: 50px;
+	font-size: 30px;
+	color: var(--font-color);
+}
+
+/* .navside .close:hover {
+	position: absolute;
+	top: 85px;
+	right: 22px;
+	margin-left: 50px;
+	font-size: 30px;
+	color: #e0960b;
+} */
+
+.navside {
+	height: 0;
+	width: 100%;
+	position: inline-block;
+  z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: var(--bg-color);
+	overflow-x: hidden;
+	/* padding-top: 60px; */
+  padding: 0px;
+	transition: 0.6s;
+  border: 3px solid var(--nav-color);
+}
+
+.navside a.item {
+  /* overflow-x: hidden; */
+	font-weight: 700;
+  display: flex;
+	flex-direction: column;
+	padding: 18px 30px;
+	font-size: 20px;
+	text-decoration: none;
+	color: var(--font-color);
+	background-color: var(--bg-color);
+}
+
+.navside .icon {
+	padding-right: 10px;
+	font-size: 20px;
+}
+
+.navside a.inline {
+	font-size: 30px;
+	color:  #07711f;
+	padding: 6px 5px 3px;
+}
+.navside a.inline:hover {
+	color: #e0960b;
+}
+
+
+/* Main Navbar Customization */
+.menu-logo {
+  display: flex !important;
+}
+
 .logo-font {
     font-family: 'Josefin Sans' !important;
-    /* text-transform: uppercase !important; */
 }
 
 .main-logo-link {
