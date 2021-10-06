@@ -37,10 +37,10 @@
     <title>Miscellaneous {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid bg-green fixed-top">
+    <header class="container-fluid bg-green fixed-top px-0">
         <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 justify d-lg-flex">
-                <button  onclick="openSlideMenu()" class="btn-menu slide" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button  onclick="openSlideMenu()" class="btn-menu" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -129,14 +129,14 @@
                 
             </nav>
         </div>
-        <div id="menu" class="navside text-center justify">
-            <!--Image which closes side Menu In on Left-->
-            <a href="#" class="close" onclick="closeSlideMenu()"><i class="fas fa-chevron-down"></i></a>
-            <a id="index" href="#" class="item active">Home</a>
-            <a href="#" class="item">Products</a>
-            <a href="#" class="item">About Us</a>
-            <a href="#" class="item">Contact Us</a>
-            <a href="#" class="item">Delivery</a>
+        <div id="menu" class="row slide-menu text-center d-none d-lg-flex">
+            <div class="justify slide-out">
+                <a href="#" class="item">Product</a>
+                <a href="#" class="item">Offer</a>
+                <a href="#" class="item">Contact us</a>
+                <a href="#" class="item">Delivery</a>
+                <a href="#" class="close" onclick="closeSlideMenu()"><i class="fas fa-times"></i></a>
+            </div>
         </div>
     </header>
 
@@ -195,16 +195,16 @@
         toggleSwitch.addEventListener('change', switchTheme, false);
 
         function openSlideMenu() {
-            document.getElementById('menu').style.height = '75px';
-            document.getElementById('content').style.marginTop = '75px';
-            $(this).find("i").removeClass("fa fa-chevron-down").addClass("fa fa-times");
+            document.getElementById('menu').style.height = '53px';
+            // document.getElementById('content').style.marginTop = '55px';
+            
         }
             
-        /*JavaScript for sliding Menu out to Left*/
+        /*JavaScript for sliding Menu out to Top*/
         function closeSlideMenu() {
             document.getElementById('menu').style.height = '0';
-            document.getElementById('content').style.marginTop = '0';
-            $(this).find("i").removeClass("fa fa-times").addClass("fa fa-chevron-down");
+            // document.getElementById('content').style.marginTop = '0';
+            
         }
     </script>
     {% endblock %}
