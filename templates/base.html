@@ -37,14 +37,14 @@
     <title>Miscellaneous {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid bg-green fixed-top px-0">
+    <header class="container-fluid bg-nav fixed-top px-0">
         <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 justify d-lg-flex">
                 <button  onclick="openSlideMenu()" class="btn-menu" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font text-white my-0 pt-2"><strong>Misc</strong>ellaneous</h2>
+                    <h2 class="logo-font my-0 pt-2"><strong>Misc</strong>ellaneous</h2>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -73,13 +73,13 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item dropdown">
-                        <a class="text-white nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="font-nav nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
                                 <p class="my-0">My Account</p>
                             </div>
                         </a>
-                        <div class="dropdown-menu border-0 bg-green" aria-labelledby="user-options">
+                        <div class="dropdown-menu border-0 bg-nav" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                     <a href="" class="dropdown-item">Product Management</a>
@@ -93,7 +93,7 @@
                         </div>
                     </li>
                     <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link" href="">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}font-nav{% endif %} nav-link" href="">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                                 <p class="my-0">
@@ -114,9 +114,8 @@
                                     <div class="slider round"></div>
                                 </label>
                             </div>
-                            
                          </div>
-                         <p class="my-0 text-white">Light | Dark
+                         <p class="my-0 font-nav">Light | Dark
                     </li>
                 </ul>
             </div>
@@ -131,9 +130,9 @@
         </div>
         <div id="menu" class="row slide-menu text-center d-none d-lg-flex">
             <div class="justify slide-out">
-                <a href="#" class="item">Product</a>
-                <a href="#" class="item">Offer</a>
-                <a href="#" class="item">Contact us</a>
+                <a href="#" class="item">Product</a><span class="divider">|</span>
+                <a href="#" class="item">Offer</a><span class="divider">|</span>
+                <a href="#" class="item">Contact us</a><span class="divider">|</span>
                 <a href="#" class="item">Delivery</a>
                 <a href="#" class="close" onclick="closeSlideMenu()"><i class="fas fa-times"></i></a>
             </div>
@@ -164,6 +163,20 @@
     {% block content %}
     {% endblock %}
 
+    <footer class="container-fluid bg-nav footer-top-border fixed-bottom px-0">
+        <div id="bottomnav" class="row d-lg-flex">
+            <div class="col col-12 col-lg-4"></div>
+
+            <div class="col col-12 col-lg-4 footer-media footer-font my-auto py-2">
+                <i class="fab fa-instagram footer-media"></i> |
+                <i class="fab fa-facebook-f footer-media"></i>
+            </div>
+            
+            <div class="col col-12 col-lg-4 my-auto py-2">
+                <div class="footer-copyright footer-font"> Copyright &copy; 2018-<script>document.write(new Date().getFullYear())</script> Miscellaneous, All Rights Reserved</div>
+            </div>
+        </div>
+    </footer>
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');

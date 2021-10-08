@@ -28,9 +28,11 @@
 
     /* Light Mode */
     --nav-color: #0e590a;
+    --nav-font-color: #e7eee7;
     --font-color: #011801;
     --bg-color: #e7eee7;
     --hover-color: #c3d6c2;
+    --menu-hover-color: #d35400;
 }
 
 [data-theme="dark"] {
@@ -51,7 +53,7 @@ body {
     margin: 2rem;
 }
 
-/*slider switch css */
+/* --------------------+--------------------+--------------------Slider Switch CSS-------------------- */
 
 .justify{
   display: flex !important;
@@ -86,10 +88,10 @@ body {
 }
 
 .slider:before {
-  background-color: #0e590a;
+  background-color: var(--font-color);
   bottom: 4px;
   content: "";
-  height: 14px;
+  height: 12px;
   left: 4px;
   position: absolute;
   transition: .4s;
@@ -106,28 +108,15 @@ input:checked + .slider:before {
 
 .slider.round {
   border-radius: 22px;
+  border: 1px solid var(--bg-color);
 }
 
 .slider.round:before {
   border-radius: 50%;
+  border: 1px solid var(--font-color);
 }
 
-/* from Bulma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
-.btn-menu {
-  background: transparent !important;
-  border: 0px;
-  color: var(--bg-color);
-}
-
-/*----------------------------------------------Side Bar--*/
+/* --------------------+--------------------+--------------------Slide Bar-------------------- */
 
 .slide-menu {
   position: relative;
@@ -138,9 +127,17 @@ input:checked + .slider:before {
   width: 100%;
   --bs-gutter-x: 0 !important;
   overflow-y: hidden;
-  border-bottom: 6px solid var(--font-color);
+  border-bottom: 2px solid var(--font-color);
+  border-top: 2px solid var(--font-color);
   background-color: var(--bg-color);
   transition: 0.7s;
+}
+
+.divider {
+  text-decoration: none !important;
+  color: var(--font-color);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;  
 }
 
 .item {
@@ -156,11 +153,22 @@ input:checked + .slider:before {
   color: var(--font-color);
   text-align: left;
   position: absolute;
-	top: 10px;
+	top: 8px;
 	right: 22px;
 }
 
-/* Main Navbar Customization */
+.item:hover,
+.close:hover {
+  color: var(--menu-hover-color);
+  font-weight: bolder;
+}
+
+/* --------------------+--------------------+--------------------Main Navbar Customization-------------------- */
+
+.font-nav{
+  color: var(--nav-font-color);
+}
+
 .menu-logo {
   display: flex !important;
 }
@@ -170,18 +178,33 @@ input:checked + .slider:before {
 }
 
 .main-logo-link {
-    width: fit-content;
+  width: fit-content;
+  color: var(--nav-font-color);
 }
 
-.bg-green{
-    background: var(--nav-color);
+.bg-nav{
+    background:  #0e590a;
+}
+
+.btn-menu {
+  background: transparent !important;
+  border: 0px;
+  color: var(--nav-font-color);
+}
+
+.main-logo-link:hover,
+.font-nav:hover,
+.btn-menu:hover {
+  color: var(--menu-hover-color);
+  font-weight: bolder;
 }
 
 .shop-now-button {
-    background: var(--bg-color) !important;
-    color: var(--font-color) !important;
-    min-width: 260px;
-    border: 1px solid var(--hover-color) !important;
+  background: var(--bg-color) !important;
+  color: var(--font-color) !important;
+  min-width: 260px;
+  border: 1px solid var(--hover-color) !important;
+  /* border-radius: 8px !important; */
 }
 
 .shop-now-button:hover {
@@ -191,10 +214,10 @@ input:checked + .slider:before {
   border: 1px solid var(--hover-color);
 }
 
+/* --------------------+--------------------+--------------------Search-------------------- */
+
 .search-form {
   --searchButtonWidth: 50px;
-  
-  /* max-width: 320px; */
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -205,15 +228,19 @@ input:checked + .slider:before {
   margin: 0;
   padding: 0.5rem calc(var(--searchButtonWidth) + 0.5rem) 0.5rem 0.5rem;
   border-radius: 8px;
-  /* width: 100%; */
-  background: #ddd;
+  font-family: 'Lato' !important;
+  background: var(--nav-color);
   -webkit-appearance: none;
   font-size: 13px;
+  color: var(--nav-color);
 }
+
 .search-input:focus {
   outline: 0;
-  background: white;
+  background: #e7eee7;
+  border: 0px;
 }
+
 .search-input:not(:placeholder-shown) ~ .search-button {
   transform: translateX(calc(-1 * var(--searchButtonWidth)));
 }
@@ -227,15 +254,31 @@ input:checked + .slider:before {
   left: 100%;
   width: var(--searchButtonWidth);
   transition: 0.4s !important;
-  background: #455A64;
-  color: #0e590a !important;
+  color: var(--nav-color) !important;
   font-size: 13px;
   height: 100%;
+}
+
+.search-button:hover {
+  color: var(--menu-hover-color);
 }
 
 .search-button:focus {
   outline: 0;
   background: transparent;
+}
+
+/* from Bulma */
+.icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.icon:hover {
+color: var(--menu-hover-color);
 }
 
 .screen-reader-text {
@@ -245,7 +288,6 @@ input:checked + .slider:before {
 }
 
 .btn-black {
-    /* background: black; */
     color: white;
 }
 
@@ -271,10 +313,6 @@ input:checked + .slider:before {
     background: #222;
     color: white;
 }
-
-/* .text-green {
-    color: #0e590a !important;
-} */
 
 .border-black {
     border: 1px solid black !important;
@@ -317,7 +355,7 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
-/* ------------------------------- bootstrap toasts */
+/* --------------------+--------------------+--------------------Bootstrap Toasts-------------------- */
 
 .message-container {
     position: fixed;
@@ -385,13 +423,112 @@ input[name='q']::placeholder {
     overflow-y: auto;
 }
 
-/* -------------------------------- Media Queries */
+/* --------------------+--------------------+--------------------Media Queries-------------------- */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
   .container {
     max-width: 80%;
   }
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+  .fixed-top-desktop-only {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+
+  .header-container {
+    padding-top: 164px !important;
+  }
+
+  .bg-banner{
+    background: var(--nav-color);
+  }
+
+  .divider,
+  .item {
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 20px;
+  }
+
+  .close {
+    font-size: 20px;
+  }
+
+}
+
+/* pad the top a bit when navbar is collapsed on mobile */
+
+@media (max-width: 991px) {
+  .header-container {
+    padding-top: 116px;
+  }
+
+  body {
+    height: calc(100vh - 116px);
+  }
+
+  .display-4.logo-font.text-black {
+    font-size: 2rem;
+  }
+
+  .nav-link {
+    padding: 0.15rem;
+  }
+
+  .nav-link i.fa-lg {
+    font-size: 1rem;
+  }
+
+  .navbar-toggler {
+    padding: .6rem .6rem;
+    font-size: 1rem;
+  }
+
+  #delivery-banner {
+    font-size: .2rem;
+  }
+
+  .bg-banner{
+    background: var(--nav-color);
+  }
+
+  .btn.btn-outline-black.rounded-0,
+  .btn.btn-black.rounded-0 {
+    padding: .375rem .375rem;
+  }
+
+  .btn.btn-outline-black.rounded-0.btn-lg,
+  .btn.btn-black.rounded-0.btn-lg {
+    padding: .375rem .375rem;
+    font-size: .75rem;
+  }
+
+  .increment-qty, .decrement-qty {
+    padding: .25rem .5rem !important;    }
+
+  .divider,
+  .item {
+    margin-left: 7px;
+    margin-right: 7px;
+    font-size: 16px;
+  }
+
+  .close {
+    font-size: 16px;
+  }
+
+  .footer-media,
+  .footer-copyright {
+    text-align: center !important;
+  }
+
 }
 
 /* Allauth form formatting */
@@ -476,100 +613,28 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+/* --------------------+--------------------+--------------------Footer-------------------- */
 
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-  .fixed-top-desktop-only {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-  }
-
-  .header-container {
-    padding-top: 164px !important;
-  }
-
-  .bg-banner{
-    background: var(--nav-color);
-  }
-
-  .item {
-    margin-left: 60px;
-    margin-right: 60px;
-    font-size: 20px;
-  }
-
-  .close {
-    font-size: 20px;
-  }
+.footer-top-border {
+  border-top: 4px solid var(--font-color);
 }
 
-/* pad the top a bit when navbar is collapsed on mobile */
-@media (max-width: 991px) {
-    .header-container {
-        padding-top: 116px;
-    }
-
-    body {
-        height: calc(100vh - 116px);
-    }
-
-    .display-4.logo-font.text-black {
-        font-size: 2rem;
-    }
-
-    .nav-link {
-        padding: 0.15rem;
-    }
-
-    .nav-link i.fa-lg {
-        font-size: 1rem;
-    }
-
-    .navbar-toggler {
-        padding: .6rem .6rem;
-        font-size: 1rem;
-    }
-
-    #delivery-banner {
-        font-size: .2rem;
-    }
-
-    .bg-banner{
-        /* background: #0e590a !important; */
-        background: var(--nav-color);
-    }
-
-    .btn.btn-outline-black.rounded-0,
-    .btn.btn-black.rounded-0 {
-        padding: .375rem .375rem;
-    }
-
-    .btn.btn-outline-black.rounded-0.btn-lg,
-    .btn.btn-black.rounded-0.btn-lg {
-        padding: .375rem .375rem;
-        font-size: .75rem;
-    }
-
-    .increment-qty, .decrement-qty {
-        padding: .25rem .5rem !important;
-    }
-
-  .item {
-    margin-left: 15px;
-    margin-right: 15px;
-    font-size: 16px;
-  }
-
-  .close {
-    font-size: 16px;
-  }
+.footer-font {
+  color: var(--nav-font-color);
 }
 
+.footer-media {
+  text-align: end;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 20px;
+}
 
-/* --------------------+--------------------BOOTSTRAP--------------------+-------------------- */
+.footer-copyright {
+  text-align: start;
+}
+
+/* --------------------+--------------------+--------------------BOOTSTRAP-------------------- */
 
 /* @charset "UTF-8"; */
 
